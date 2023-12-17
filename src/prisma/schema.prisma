@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model chatBox_User {
+  idUser      Int      @id @default(autoincrement())
+  nome_User   String
+  apelido_User String
+  email_User  String
+  senha_User  String
+  tweets      chatBox_Tweet[] // Adicionando um campo para representar a relação inversa
+}
+
+model chatBox_Tweet {
+  idTweet       Int      @id @default(autoincrement())
+  texto_Tweet   String
+  foto_Tweet    String?
+  video_Tweet   String?
+  curtidas_Tweet Int      @default(0)
+  idUser        Int
+  user          chatBox_User @relation(fields: [idUser], references: [idUser])
+}
+
