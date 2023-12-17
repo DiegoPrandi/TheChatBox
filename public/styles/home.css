@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1da1f2;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.login {
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+}
+
+.tweet {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tweet p {
+  margin: 0;
+}
+
+.tweet a {
+  color: #1da1f2;
+  text-decoration: none;
+}
