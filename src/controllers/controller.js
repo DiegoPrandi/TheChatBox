@@ -9,3 +9,15 @@ exports.home =
   async (req, res) => {
     res.sendFile(path.join(__dirname, "../../public/home.html"));
   });
+
+exports.login =
+  ("/login",
+  async (req, res) => {
+    res.sendFile(path.join(__dirname, "../../public/login.html"));
+  });
+
+exports.cadastro =
+  ("/cadastro",
+  async (req, res) => {
+    res.sendFile(path.join(__dirname, "../../public/signup.html"));
+  });
