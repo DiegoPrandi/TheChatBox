@@ -1,13 +1,33 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const path = require("path");
-const express = require("express");
+// logica para obter id do Usuario logado na sessão
+const getUserFromSession = async (userId) => {
+  if (!userId) return null;
+
+  try {
+    const usuario = await prisma.chatBox_User.findUnique({
+      where: { idUser: userId },
+    });
+    return usuario;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Erro ao obter usuário da sessão");
+  }
+};
 
 // PAGINA HOME
-// PAGINA HOME
 exports.home = async (req, res) => {
-  res.render("home");
+  try {
+    // Chama a função do controller para obter as informações do usuário
+    const usuario = await getUserFromSession(req.session.userId);
+
+    res.render("home", { usuario });
+    console.log(usuario);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro interno do servidor");
+  }
 };
 
 // PAGINA LOGIN
@@ -22,7 +42,13 @@ exports.cadastro = async (req, res) => {
 
 // PAGINA TWEETAR
 exports.tweetar = async (req, res) => {
-  res.render("tweetar");
+  try {
+    const usuario = await getUserFromSession(req.session.userId);
+    res.render("tweetar", { usuario });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro interno do servidor");
+  }
 };
 
 // CADASTRAR USUARIO NO BANCO DE DADOS
@@ -30,7 +56,7 @@ exports.cadastroPOST = async (req, res) => {
   const { nome_User, apelido_User, email_User, senha_User } = req.body;
 
   try {
-    // Criar um novo usuário
+    // criar um novo usuário
     const novoUsuario = await prisma.chatBox_User.create({
       data: {
         nome_User,
@@ -40,7 +66,7 @@ exports.cadastroPOST = async (req, res) => {
       },
     });
 
-    alert("Usuário cadastrado com sucesso");
+    console.log("Usuário cadastrado com sucesso");
     res.redirect("/home");
   } catch (error) {
     console.error(error);
@@ -53,7 +79,7 @@ exports.loginPOST = async (req, res) => {
   const { email_User, senha_User } = req.body;
 
   try {
-    // Verificar as credenciais do usuário
+    // verificar as credenciais do usuário
     const usuario = await prisma.chatBox_User.findFirst({
       where: {
         email_User: email_User,
@@ -65,7 +91,7 @@ exports.loginPOST = async (req, res) => {
       return res.status(401).send("Credenciais inválidas");
     }
 
-    // Armazenar o ID do usuário na sessão
+    // armazenar o ID do usuário na sessão
     req.session.userId = usuario.idUser;
 
     res.redirect("/home");
@@ -73,26 +99,24 @@ exports.loginPOST = async (req, res) => {
     console.error(error);
     res.status(500).send("Erro interno do servidor");
   }
+};
 
-  // TWEETAR
-  exports.tweetarPOST = async (req, res) => {
-    const { text_Tweet } = req.body;
-    const userId = req.session.userId;
+// TWEETAR
+exports.tweetarPOST = async (req, res) => {
+  const { text_Tweet } = req.body;
+  const userId = req.session.userId;
 
-    try {
-      const novoTweet = await prisma.chatBox_Tweet.create({
-        data: {
-          texto_Tweet: text_Tweet,
-          user: { connect: { idUser: userId } }, // conectar ao usuário existente
-          // esse user é a conexão do prisma
-          // a fk que conecta as tabelas pelo (idUser)
-        },
-      });
+  try {
+    const novoTweet = await prisma.chatBox_Tweet.create({
+      data: {
+        texto_Tweet: text_Tweet,
+        user: { connect: { idUser: userId } },
+      },
+    });
 
-      res.redirect("/home");
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Erro interno do servidor");
-    }
-  };
+    res.redirect("/home");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Erro interno do servidor");
+  }
 };
