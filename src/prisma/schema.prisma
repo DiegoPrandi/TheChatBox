@@ -11,13 +11,15 @@ datasource db {
 }
 
 model chatBox_User {
-  idUser      Int      @id @default(autoincrement())
-  nome_User   String
+  idUser       Int           @id @default(autoincrement())
+  nome_User    String
   apelido_User String
-  email_User  String
-  senha_User  String
-  tweets      chatBox_Tweet[] // Adicionando um campo para representar a relação inversa
+  email_User   String
+  senha_User   String
+  biografia    String?       @db.VarChar(255) @default("No bio yet")
+  tweets       chatBox_Tweet[] // Adicionando um campo para representar a relação inversa
 }
+
 
 model chatBox_Tweet {
   idTweet       Int      @id @default(autoincrement())
