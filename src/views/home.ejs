@@ -1,3 +1,4 @@
+<!-- PAGINA HOME -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,11 +20,12 @@
       </div>
     </header>
     <main>
+      <% tweets.forEach(tweet => { %>
       <div class="tweet">
-        <p>make a tweet</p>
-        <a href="#">#now</a>
+        <p><%= tweet.user.apelido_User %></p>
+        <span><%= tweet.texto_Tweet %></span>
       </div>
+      <% }); %>
     </main>
-    <script></script>
   </body>
 </html>

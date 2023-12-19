@@ -19,10 +19,23 @@ const getUserFromSession = async (userId) => {
 // PAGINA HOME
 exports.home = async (req, res) => {
   try {
-    // Chama a função do controller para obter as informações do usuário
-    const usuario = await getUserFromSession(req.session.userId);
+    const userId = req.session.userId;
 
-    res.render("home", { usuario });
+    // Obter todos os tweets
+    const tweets = await prisma.chatBox_Tweet.findMany({
+      include: {
+        user: {
+          select: {
+            apelido_User: true,
+          },
+        },
+      },
+    });
+
+    // obter as informações do usuário
+    const usuario = await getUserFromSession(userId);
+
+    res.render("home", { usuario, tweets });
     console.log(usuario);
   } catch (error) {
     console.error(error);
