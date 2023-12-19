@@ -5,6 +5,7 @@ CREATE TABLE `chatBox_User` (
     `apelido_User` VARCHAR(191) NOT NULL,
     `email_User` VARCHAR(191) NOT NULL,
     `senha_User` VARCHAR(191) NOT NULL,
+    `biografia` VARCHAR(255) NULL DEFAULT 'No bio yet',
 
     PRIMARY KEY (`idUser`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

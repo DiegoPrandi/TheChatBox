@@ -30,4 +30,3 @@ model chatBox_Tweet {
   idUser        Int
   user          chatBox_User @relation(fields: [idUser], references: [idUser])
 }
-

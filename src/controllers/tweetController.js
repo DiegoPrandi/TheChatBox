@@ -1,5 +1,21 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const loginController = require("./loginController");
+
+// LOGICA PARA OBTER ID DO USUARIO LOGADO NA SESSÃO
+const getUserFromSession = async (userId) => {
+  if (!userId) return null;
+
+  try {
+    const usuario = await prisma.chatBox_User.findUnique({
+      where: { idUser: userId },
+    });
+    return usuario;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Erro ao obter usuário da sessão");
+  }
+};
 
 // PAGINA TWEETAR
 exports.tweetar = async (req, res) => {
