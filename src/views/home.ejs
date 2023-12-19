@@ -9,7 +9,13 @@
   <body>
     <header>
       <div class="logo">Twitter</div>
-      <div class="login"><a href="/login">Login</a></div>
+      <div class="login" id="loginContainer">
+        <% if (usuario) { %>
+        <div class="login">Bem-vindo, <%= usuario.nome_User %>!</div>
+        <% } else { %>
+        <div class="login"><a href="/login">Login</a></div>
+        <% } %>
+      </div>
     </header>
     <main>
       <div class="tweet">
@@ -17,5 +23,6 @@
         <a href="#">#now</a>
       </div>
     </main>
+    <script></script>
   </body>
 </html>
