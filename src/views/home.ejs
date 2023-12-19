@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <div class="logo">Twitter</div>
+      <div class="logo"><a href="/home">Twitter</a></div>
       <div class="login" id="loginContainer">
         <% if (usuario) { %>
         <div class="tweetar"><a href="/tweetar">Postar</a></div>
@@ -22,10 +22,16 @@
     <main>
       <% tweets.forEach(tweet => { %>
       <div class="tweet">
-        <p><%= tweet.user.apelido_User %></p>
+        <!-- Adicione o link ao redor do nome do usuário -->
+        <p>
+          <a href="/perfil/<%= tweet.user.idUser %>">
+            <%= tweet.user.apelido_User %>
+          </a>
+        </p>
         <span><%= tweet.texto_Tweet %></span>
       </div>
       <% }); %>
     </main>
+    <script></script>
   </body>
 </html>

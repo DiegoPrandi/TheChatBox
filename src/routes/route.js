@@ -1,20 +1,26 @@
 const express = require("express");
-const controller = require("../controllers/controller");
+const loginController = require("../controllers/loginController");
+const tweetController = require("../controllers/tweetController");
+const userController = require("../controllers/userController");
 const router = express.Router();
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// GET
-router.get("/home", controller.home);
-
-router.get("/login", controller.login);
-router.get("/cadastro", controller.cadastro);
-router.get("/tweetar", controller.tweetar);
+// LOGIN CONTROLLER
+router.get("/home", loginController.home);
+router.get("/login", loginController.login);
+router.get("/cadastro", loginController.cadastro);
 
 // POST
-router.post("/cadastro", controller.cadastroPOST);
-router.post("/login", controller.loginPOST);
-router.post("/tweetar", controller.tweetarPOST);
+router.post("/cadastro", loginController.cadastroPOST);
+router.post("/login", loginController.loginPOST);
+
+// TWEET CONTROLLER
+router.get("/tweetar", tweetController.tweetar);
+router.post("/tweetar", tweetController.tweetarPOST);
+
+// USER CONTROLLER
+router.get("/perfil/:userId", userController.perfilUsuario);
 
 module.exports = router;

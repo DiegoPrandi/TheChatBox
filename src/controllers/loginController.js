@@ -1,7 +1,17 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// logica para obter id do Usuario logado na sessão
+// PAGINA LOGIN
+exports.login = async (req, res) => {
+  res.render("login");
+};
+
+// PAGINA CADASTRO
+exports.cadastro = async (req, res) => {
+  res.render("signup");
+};
+
+// LOGICA PARA OBTER ID DO USUARIO LOGADO NA SESSÃO
 const getUserFromSession = async (userId) => {
   if (!userId) return null;
 
@@ -21,12 +31,15 @@ exports.home = async (req, res) => {
   try {
     const userId = req.session.userId;
 
-    // Obter todos os tweets
+    // obter todos os tweets
     const tweets = await prisma.chatBox_Tweet.findMany({
       include: {
         user: {
           select: {
+            idUser: true,
+            nome_User: true,
             apelido_User: true,
+            email_User: true,
           },
         },
       },
@@ -36,28 +49,6 @@ exports.home = async (req, res) => {
     const usuario = await getUserFromSession(userId);
 
     res.render("home", { usuario, tweets });
-    console.log(usuario);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Erro interno do servidor");
-  }
-};
-
-// PAGINA LOGIN
-exports.login = async (req, res) => {
-  res.render("login");
-};
-
-// PAGINA CADASTRO
-exports.cadastro = async (req, res) => {
-  res.render("signup");
-};
-
-// PAGINA TWEETAR
-exports.tweetar = async (req, res) => {
-  try {
-    const usuario = await getUserFromSession(req.session.userId);
-    res.render("tweetar", { usuario });
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro interno do servidor");
@@ -87,7 +78,7 @@ exports.cadastroPOST = async (req, res) => {
   }
 };
 
-// LOGIN DO USUARIO USANDO EXPRESS-SESSION
+// LOGIN USUARIO E ARMAZENAR NA SESSÃO
 exports.loginPOST = async (req, res) => {
   const { email_User, senha_User } = req.body;
 
@@ -110,26 +101,6 @@ exports.loginPOST = async (req, res) => {
     res.redirect("/home");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Erro interno do servidor");
-  }
-};
-
-// TWEETAR
-exports.tweetarPOST = async (req, res) => {
-  const { text_Tweet } = req.body;
-  const userId = req.session.userId;
-
-  try {
-    const novoTweet = await prisma.chatBox_Tweet.create({
-      data: {
-        texto_Tweet: text_Tweet,
-        user: { connect: { idUser: userId } },
-      },
-    });
-
-    res.redirect("/home");
-  } catch (error) {
-    console.log(error);
     res.status(500).send("Erro interno do servidor");
   }
 };
