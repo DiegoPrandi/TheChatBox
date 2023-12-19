@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(route);
 
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public/scripts")));
 
 // ------ ROTAS -------
 app.use("/home", route);
