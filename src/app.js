@@ -40,6 +40,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/home", route);
 app.use("/login", route);
 app.use("/cadastro", route);
+app.use("/tweetar", route);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

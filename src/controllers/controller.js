@@ -20,6 +20,11 @@ exports.cadastro = async (req, res) => {
   res.render("signup");
 };
 
+// PAGINA TWEETAR
+exports.tweetar = async (req, res) => {
+  res.render("tweetar");
+};
+
 // CADASTRAR USUARIO NO BANCO DE DADOS
 exports.cadastroPOST = async (req, res) => {
   const { nome_User, apelido_User, email_User, senha_User } = req.body;
@@ -68,4 +73,26 @@ exports.loginPOST = async (req, res) => {
     console.error(error);
     res.status(500).send("Erro interno do servidor");
   }
+
+  // TWEETAR
+  exports.tweetarPOST = async (req, res) => {
+    const { text_Tweet } = req.body;
+    const userId = req.session.userId;
+
+    try {
+      const novoTweet = await prisma.chatBox_Tweet.create({
+        data: {
+          texto_Tweet: text_Tweet,
+          user: { connect: { idUser: userId } }, // conectar ao usuário existente
+          // esse user é a conexão do prisma
+          // a fk que conecta as tabelas pelo (idUser)
+        },
+      });
+
+      res.redirect("/home");
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Erro interno do servidor");
+    }
+  };
 };

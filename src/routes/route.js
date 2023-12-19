@@ -11,13 +11,14 @@ router.get("/home", async (req, res) => {
     let usuario = null;
 
     if (req.session.userId) {
-      // Se há uma sessão de usuário, procure o usuário no banco de dados
+      // se há uma sessão de usuário, procure o usuário no banco de dados
       usuario = await prisma.chatBox_User.findUnique({
         where: {
           idUser: req.session.userId,
         },
         select: {
           nome_User: true,
+          apelido_User: true,
         },
       });
     }
@@ -29,11 +30,18 @@ router.get("/home", async (req, res) => {
     res.status(500).send("Erro interno do servidor");
   }
 });
+
 router.get("/login", controller.login);
 router.get("/cadastro", controller.cadastro);
+router.get("/tweetar", (req, res) => {
+  const usuario = req.session.userId ? { nome_User: "Usuário" } : null;
+  // passar o idUser para o /tweetar
+  res.render("tweetar", { usuario });
+});
 
 // POST
 router.post("/cadastro", controller.cadastroPOST);
 router.post("/login", controller.loginPOST);
+router.post("/tweetar", controller.tweetarPOST);
 
 module.exports = router;

@@ -21,6 +21,11 @@ header {
   cursor: pointer;
 }
 
+#loginContainer {
+  display: flex;
+  gap: 1rem;
+}
+
 main {
   padding: 20px;
 }

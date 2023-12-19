@@ -11,6 +11,7 @@
       <div class="logo">Twitter</div>
       <div class="login" id="loginContainer">
         <% if (usuario) { %>
+        <div class="tweetar"><a href="/tweetar">Postar</a></div>
         <div class="login">Bem-vindo, <%= usuario.nome_User %>!</div>
         <% } else { %>
         <div class="login"><a href="/login">Login</a></div>
