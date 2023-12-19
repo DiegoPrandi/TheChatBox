@@ -20,6 +20,7 @@ app.use(
 
 // indicando a rota
 const route = require("./routes/route");
+const { Script } = require("vm");
 const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +31,6 @@ app.use(route);
 
 // configurar o servidor para apresentar os arquivos estáticos (css e js)
 app.use(express.static(path.join(__dirname, "../public")));
-app.use(express.static(path.join(__dirname, "../public/scripts")));
 
 // ejs
 app.set("view engine", "ejs");

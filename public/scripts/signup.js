@@ -1,3 +1,4 @@
+console.log("teste");
 function validatePassword() {
   var senha = document.getElementById("senha_User").value;
   var confirmarSenha = document.getElementById("confirmPassword").value;

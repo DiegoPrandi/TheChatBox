@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil do Usuário</title>
+    <!-- REMIX ICONS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/userProfile.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Twitter</div>
+    </header>
+    <main>
+      <div class="perfil">
+        <h1>Perfil de <%= usuario.nome_User %></h1>
+        <p>Apelido: <%= usuario.apelido_User %></p>
+        <% if (podeEditar) { %>
+        <form id="biografiaForm" action="/editar-biografia" method="post">
+          <p>Biografia:</p>
+          <input
+            type="text"
+            id="biografiaInput"
+            name="novaBiografia"
+            value="<%= usuario.biografia || 'No bio yet' %>"
+            readonly
+          />
+          <span onclick="alternarEdicaoBiografia()">
+            <i class="ri-pencil-line"></i>
+          </span>
+
+          <!-- Botão Salvar -->
+          <button type="submit" id="btnSalvar" style="display: none">
+            Salvar
+          </button>
+        </form>
+        <% } else { %>
+        <p>Biografia: <%= usuario.biografia || 'No bio yet' %></p>
+        <% } %>
+      </div>
+      <a href="/home">Home</a>
+    </main>
+    <script src="../scripts/userProfile.js"></script>
+  </body>
+</html>

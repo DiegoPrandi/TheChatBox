@@ -22,5 +22,6 @@ router.post("/tweetar", tweetController.tweetarPOST);
 
 // USER CONTROLLER
 router.get("/perfil/:userId", userController.perfilUsuario);
+router.post("/editar-biografia", userController.editarBiografia);
 
 module.exports = router;
