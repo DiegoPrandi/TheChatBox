@@ -6,31 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Twitter Clone</title>
     <link rel="stylesheet" href="./styles/home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header>
-      <div class="logo"><a href="/home">Twitter</a></div>
-      <div class="login" id="loginContainer">
-        <% if (usuario) { %>
-        <div class="tweetar"><a href="/tweetar">Postar</a></div>
-        <div class="login">Bem-vindo, <%= usuario.nome_User %>!</div>
-        <% } else { %>
-        <div class="login"><a href="/login">Login</a></div>
-        <% } %>
+    <div class="container">
+      <!-- menu -->
+      <div class="option__menu">
+        <div class="option__center">
+          <div class="logo">
+            <i class="ri-twitter-x-fill"></i>
+          </div>
+          <div class="option">
+            <div>
+              <a href="#"><i class="ri-home-4-line"></i>Home</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-notification-line"></i>Explore</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-hashtag"></i>Notifications</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-mail-line"></i>Messages</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-bookmark-line"></i>Bookmarks</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-list-check"></i>Lists</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-user-line"></i>Profile</a>
+            </div>
+            <div>
+              <a href="#"><i class="ri-more-line"></i>More</a>
+            </div>
+            <div>
+              <button><i class="ri-pen-nib-line"></i> Tweet</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
-    <main>
-      <% tweets.forEach(tweet => { %>
-      <div class="tweet">
-        <!-- Adicione o link ao redor do nome do usuário -->
-        <p>
-          <a href="/perfil/<%= tweet.user.idUser %>">
-            <%= tweet.user.apelido_User %>
-          </a>
-        </p>
-        <span><%= tweet.texto_Tweet %></span>
+      <!-- end menu -->
+
+      <!-- content menu -->
+      <div class="content__menu">
+        <div class="prefer">
+          <span><a href="#">Home</a></span>
+          <span><i class="ri-star-line"></i></span>
+        </div>
+
+        <div class="tweets">
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <img src="imgasdas.png" alt="" />
+              </div>
+
+              <div class="profile__name">
+                <span
+                  ><p>
+                    Diego <b><i class="ri-checkbox-circle-line"></i>@hypekrl</b>
+                  </p></span
+                >
+              </div>
+
+              <div class="msg">
+                <p>Hello pintudos</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <% }); %>
-    </main>
+      <!-- end content menu -->
+
+      <div class="rank">
+        <p>Rank em manutenção :)</p>
+      </div>
+    </div>
   </body>
 </html>
