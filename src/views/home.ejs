@@ -21,57 +21,82 @@
           </div>
           <div class="option">
             <div>
-              <a href="/home"><i class="ri-home-4-line"></i>Home</a>
+              <a href="/home"
+                ><i class="ri-home-4-line"></i>
+                <p>Home</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-notification-line"></i>Explore</a>
+              <a href="#"
+                ><i class="ri-notification-line"></i>
+                <p>Explore</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-hashtag"></i>Notifications</a>
+              <a href="#"
+                ><i class="ri-hashtag"></i>
+                <p>Notifications</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-mail-line"></i>Messages</a>
+              <a href="#">
+                <i class="ri-mail-line"></i>
+                <p>Messages</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-bookmark-line"></i>Bookmarks</a>
+              <a href="#"
+                ><i class="ri-bookmark-line"></i>
+                <p>Bookmarks</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-list-check"></i>Lists</a>
+              <a href="#"
+                ><i class="ri-list-check"></i>
+                <p>Lists</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-user-line"></i>Profile</a>
+              <a href="#"
+                ><i class="ri-user-line"></i>
+                <p>Profile</p></a
+              >
             </div>
             <div>
-              <a href="#"><i class="ri-more-line"></i>More</a>
+              <a href="#"
+                ><i class="ri-more-line"></i>
+                <p>More</p></a
+              >
             </div>
             <div id="tweetar">
               <% if (usuario) { %>
-              <a href="/tweetar" class="tweetar">Postar</a>
+              <a href="/tweetar" class="tweetar"
+                ><i class="ri-quill-pen-line"></i>Postar</a
+              >
               <% } %>
             </div>
           </div>
-        </div>
-
-        <!-- Mini Card do Usuário -->
-        <% if (usuario) { %>
-        <script>
-          const usuarioLogado = {
-            foto_url:
-              '<%= usuario.foto_url || "https://placekitten.com/40/40" %>',
-            nome: "<%= usuario.nome_User %>",
-          };
-        </script>
-        <div class="mini-card">
-          <img
-            src="<%= usuario.foto_url || 'https://placekitten.com/40/40' %>"
-            alt="Imagem de perfil"
-          />
-          <div class="user-info">
-            <span><%= usuario.nome_User %></span>
-            <p>@<%= usuario.apelido_User %></p>
+          <!-- Mini Card do Usuário -->
+          <% if (usuario) { %>
+          <script>
+            const usuarioLogado = {
+              foto_url:
+                '<%= usuario.foto_url || "https://placekitten.com/40/40" %>',
+              nome: "<%= usuario.nome_User %>",
+            };
+          </script>
+          <div class="mini-card">
+            <img
+              src="<%= usuario.foto_url || 'https://placekitten.com/40/40' %>"
+              alt="Imagem de perfil"
+            />
+            <div class="user-info">
+              <span><%= usuario.nome_User %></span>
+              <p>@<%= usuario.apelido_User %></p>
+            </div>
           </div>
+          <% } %>
         </div>
-        <% } %>
       </div>
       <!-- end menu -->
 
@@ -110,13 +135,267 @@
               </div>
             </div>
           </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tweets__content">
+            <div class="profile__msg">
+              <div class="profile__img">
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
+              </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
+
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <% }); %>
         </div>
       </div>
       <!-- end content menu -->
 
       <div class="rank">
-        <p>Rank em manutenção :)</p>
+        <div class="subscription-section">
+          <div class="subscription-box">
+            <p class="large-text">Acabou de chegar na Box?</p>
+            <p class="small-text">
+              Inscreva-se para ter sua própria timeline personalizada!
+            </p>
+            <div class="button-container">
+              <a href="/cadastro" class="button create-account">Criar Conta</a>
+              <a href="/login" class="button access-account"
+                >Acessar Minha Conta</a
+              >
+            </div>
+            <p class="disclaimer-text">
+              Ao se inscrever, você concorda com os
+              <span>Termos de Serviço </span>e a
+              <span>Política de Privacidade,</span> incluindo o
+              <span>Uso de Cookies.</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <script src="../scripts/home.js"></script>

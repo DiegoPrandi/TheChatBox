@@ -23,7 +23,6 @@ body {
 /* MENU OPÇÕES ESQUERDA */
 .option__menu {
   width: 100%;
-  height: 100%;
   border-right: solid 1px #2f3336;
   padding: 20px;
   display: flex;
@@ -33,28 +32,28 @@ body {
 
 .option__center {
   float: right;
+  position: sticky;
+  top: 20px;
 }
 
 .logo i {
   color: #fff;
   font-size: 1.4rem;
-  margin-left: 1.4rem;
+  margin-left: 0.7rem;
   padding-bottom: 0.5rem;
 }
 
 .option div a {
   color: #fff;
   font-size: 1.2rem;
-  border-radius: 30px;
   padding: 10px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: flex;
 }
 
 .option div a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.option div {
-  padding: 10px;
 }
 
 .option div a i {
@@ -81,6 +80,10 @@ body {
   transition: background-color 0.2s ease;
 }
 
+.option .tweetar i {
+  display: none;
+}
+
 .option .tweetar:hover {
   background-color: #1572af;
 }
@@ -89,16 +92,25 @@ body {
 .mini-card {
   display: flex;
   align-items: center;
-  margin-top: auto;
+  margin-top: 10px;
   padding: 10px;
-  border-top: solid 1px #2f3336;
-  width: 60%;
+  width: 200px;
   visibility: hidden;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: solid 1px transparent;
+  position: sticky;
+  top: 100px;
+}
+
+.mini-card:hover {
+  background: #0f0f0f;
+  border-color: #423d3d;
 }
 
 .mini-card img {
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 0 10px 0 5px;
 }
 
 .mini-card {
@@ -120,7 +132,6 @@ body {
 }
 
 /* CONTENT MENU CONTEUDO CENTRAL */
-
 .content__menu {
   width: 100%;
   border-right: solid 1px #2f3336;
@@ -198,6 +209,138 @@ body {
 }
 
 /* RANK MENU DA DIREITA */
-.rank p {
+.rank {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha no topo do contêiner pai */
+  padding: 20px;
+}
+
+.subscription-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza no eixo x */
+}
+
+.subscription-box {
+  border-radius: 30px;
+  border: 1px solid #4a4e51;
+  padding: 20px;
+  width: 380px;
+}
+
+.large-text {
+  font-size: 24px;
+  font-weight: bold;
   color: #fff;
+}
+
+.small-text {
+  font-size: 13px;
+  color: #575b5f;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: #ccc;
+}
+
+.disclaimer-text {
+  font-size: 12px;
+  color: #575b5f;
+}
+
+.disclaimer-text span {
+  color: #1572af;
+  cursor: pointer;
+}
+
+.disclaimer-text span:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 992px) and (max-width: 1150px) {
+  .container {
+    grid-template-columns: 10% 50% 40%;
+  }
+
+  .option div {
+    padding: 5px 0;
+  }
+
+  .option div a p {
+    display: none;
+  }
+
+  .option div a i {
+    margin-right: 0;
+  }
+
+  .option__menu {
+    align-items: flex-end;
+    position: static;
+  }
+
+  .option__center {
+    position: sticky;
+    overflow-y: scroll;
+  }
+
+  .option .tweetar {
+    font-size: 0;
+    padding: 0;
+    margin-left: 0;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .option .tweetar i {
+    display: block;
+  }
+
+  .mini-card span,
+  .mini-card p {
+    display: none;
+  }
+
+  .mini-card {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    border-radius: 100%;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+
+  .mini-card:hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .mini-card img {
+    margin: 0;
+    transition: filter 0.3s ease; /* Adicionando uma transição suave */
+  }
+
+  .mini-card:hover img {
+    filter: brightness(0.7); /* Altera o brilho para 70% ao passar o mouse */
+  }
 }
