@@ -21,7 +21,7 @@
           </div>
           <div class="option">
             <div>
-              <a href="#"><i class="ri-home-4-line"></i>Home</a>
+              <a href="/home"><i class="ri-home-4-line"></i>Home</a>
             </div>
             <div>
               <a href="#"><i class="ri-notification-line"></i>Explore</a>
@@ -44,41 +44,73 @@
             <div>
               <a href="#"><i class="ri-more-line"></i>More</a>
             </div>
-            <div>
-              <button><i class="ri-pen-nib-line"></i> Tweet</button>
+            <div id="tweetar">
+              <% if (usuario) { %>
+              <a href="/tweetar" class="tweetar">Postar</a>
+              <% } %>
             </div>
           </div>
         </div>
+
+        <!-- Mini Card do Usuário -->
+        <% if (usuario) { %>
+        <script>
+          const usuarioLogado = {
+            foto_url:
+              '<%= usuario.foto_url || "https://placekitten.com/40/40" %>',
+            nome: "<%= usuario.nome_User %>",
+          };
+        </script>
+        <div class="mini-card">
+          <img
+            src="<%= usuario.foto_url || 'https://placekitten.com/40/40' %>"
+            alt="Imagem de perfil"
+          />
+          <div class="user-info">
+            <span><%= usuario.nome_User %></span>
+            <p>@<%= usuario.apelido_User %></p>
+          </div>
+        </div>
+        <% } %>
       </div>
       <!-- end menu -->
 
       <!-- content menu -->
       <div class="content__menu">
         <div class="prefer">
-          <span><a href="#">Home</a></span>
+          <span><a href="#">Para você</a></span>
           <span><i class="ri-star-line"></i></span>
         </div>
 
         <div class="tweets">
+          <% tweets.forEach(tweet => { %>
           <div class="tweets__content">
             <div class="profile__msg">
               <div class="profile__img">
-                <img src="imgasdas.png" alt="" />
+                <a href="/perfil/<%= tweet.user.idUser %>">
+                  <img
+                    src="https://placekitten.com/40/40"
+                    alt="Imagem de gato 50x50"
+                  />
+                </a>
               </div>
+              <div class="profile__msg__content">
+                <div class="profile__name">
+                  <a href="/perfil/<%= tweet.user.idUser %>">
+                    <span
+                      ><p><%= tweet.user.nome_User %></p>
+                      @<%= tweet.user.apelido_User %></span
+                    >
+                  </a>
+                </div>
 
-              <div class="profile__name">
-                <span
-                  ><p>
-                    Diego <b><i class="ri-checkbox-circle-line"></i>@hypekrl</b>
-                  </p></span
-                >
-              </div>
-
-              <div class="msg">
-                <p>Hello pintudos</p>
+                <div class="msg">
+                  <p><%= tweet.texto_Tweet %></p>
+                </div>
               </div>
             </div>
           </div>
+          <% }); %>
         </div>
       </div>
       <!-- end content menu -->
@@ -87,5 +119,6 @@
         <p>Rank em manutenção :)</p>
       </div>
     </div>
+    <script src="../scripts/home.js"></script>
   </body>
 </html>
