@@ -2,15 +2,27 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // PAGINA PERFIL DO USUARIO
-// PAGINA PERFIL DO USUARIO
 exports.perfilUsuario = async (req, res) => {
   try {
     const userId = req.session.userId; // ID do usuário logado
-    const perfilUserId = parseInt(req.params.userId, 10); // ID do usuário cujo perfil está sendo visualizado
+    const perfilUserId = parseInt(req.params.userId, 10); // ID do usuário do perfil está sendo visualizado
 
     // obter informações do usuário
     const usuario = await prisma.chatBox_User.findUnique({
       where: { idUser: perfilUserId },
+      include: {
+        // incluir
+        tweets: {
+          // tweets
+          select: {
+            // selecionar os campos...
+            idTweet: true,
+            texto_Tweet: true,
+            foto_Tweet: true,
+            video_Tweet: true,
+          },
+        },
+      },
     });
 
     // verificar se o usuário logado é o mesmo que está visualizando o perfil
