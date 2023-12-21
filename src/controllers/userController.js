@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const path = require("path");
 const fs = require("fs");
 
-const upload = require("../middlewares/uploadMiddleware"); // Substitua pelo caminho correto
+const upload = require("../middlewares/uploadMiddleware");
 
 // PAGINA PERFIL DO USUARIO
 exports.perfilUsuario = async (req, res) => {
