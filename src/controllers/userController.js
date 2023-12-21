@@ -6,6 +6,24 @@ const fs = require("fs");
 
 const upload = require("../middlewares/uploadMiddleware");
 
+const getUserFromSession = async (userId) => {
+  if (!userId) return null;
+
+  try {
+    const usuarioLogado = await prisma.chatBox_User.findUnique({
+      where: { idUser: userId },
+      select: {
+        nome_User: true,
+        apelido_User: true,
+        foto_Perfil: true,
+      },
+    });
+    return usuarioLogado;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Erro ao obter usuário da sessão");
+  }
+};
 // PAGINA PERFIL DO USUARIO
 exports.perfilUsuario = async (req, res) => {
   try {
@@ -32,8 +50,9 @@ exports.perfilUsuario = async (req, res) => {
 
     // verificar se o usuário logado é o mesmo que está visualizando o perfil
     const podeEditar = userId === perfilUserId;
+    const usuarioLogado = await getUserFromSession(userId);
 
-    res.render("userProfile", { usuario, podeEditar });
+    res.render("userProfile", { usuarioLogado, usuario, podeEditar, userId });
   } catch (error) {
     console.error(error);
     res.status(500).send("Erro interno do servidor");
