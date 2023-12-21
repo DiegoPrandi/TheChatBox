@@ -301,7 +301,7 @@ body {
 
   .option__center {
     position: sticky;
-    overflow-y: scroll;
+    top: 20px;
   }
 
   .option .tweetar {
@@ -342,5 +342,9 @@ body {
 
   .mini-card:hover img {
     filter: brightness(0.7); /* Altera o brilho para 70% ao passar o mouse */
+  }
+
+  .subscription-box {
+    width: 350px;
   }
 }
