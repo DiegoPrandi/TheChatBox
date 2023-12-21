@@ -17,6 +17,7 @@ model chatBox_User {
   email_User   String
   senha_User   String
   biografia    String?       @db.VarChar(255) @default("No bio yet")
+  foto_Perfil  String?
   tweets       chatBox_Tweet[] // Adicionando um campo para representar a relação inversa
 }
 
