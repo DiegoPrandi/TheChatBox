@@ -4,71 +4,118 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil do Usuário</title>
+
     <!-- REMIX ICONS -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="../styles/header.css"" />
+    <link rel="stylesheet" href="../styles/userProfile.css" />
   </head>
   <body>
-    <header>
-      <div class="logo">Twitter</div>
-    </header>
     <main>
-      <div class="perfil">
-        <h1>Perfil de <%= usuario.nome_User %></h1>
-        <div class="foto-perfil">
-          <img
-            src="<%= usuario.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
-            alt="Foto de Perfil"
-            style="border-radius: 50%"
-          />
+      <div class="container">
+        <!-- menu -->
+        <div class="option__menu">
+          <div class="option__center">
+            <div class="logo">
+              <i class="ri-twitter-x-fill"></i>
+            </div>
+            <div class="option">
+              <div>
+                <a href="/home"
+                  ><i class="ri-home-4-line"></i>
+                  <p>Home</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-notification-line"></i>
+                  <p>Explore</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-hashtag"></i>
+                  <p>Notifications</p></a
+                >
+              </div>
+              <div>
+                <a href="#">
+                  <i class="ri-mail-line"></i>
+                  <p>Messages</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-bookmark-line"></i>
+                  <p>Bookmarks</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-list-check"></i>
+                  <p>Lists</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-user-line"></i>
+                  <p>Profile</p></a
+                >
+              </div>
+              <div>
+                <a href="#"
+                  ><i class="ri-more-line"></i>
+                  <p>More</p></a
+                >
+              </div>
+              <div id="tweetar">
+                <% if (userId) { %>
+                <a href="/tweetar" class="tweetar"
+                  ><i class="ri-quill-pen-line"></i>Postar</a
+                >
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Card do Usuário -->
+          <% if (userId) { %>
+          <script>
+            const usuarioLogado = {
+              foto_Perfil:
+                '<%= usuarioLogado.foto_Perfil || "../images/perfis/userBOX.jpg" %>',
+              nome: "<%= usuarioLogado.nome_User %>",
+              apelido: "<%= usuarioLogado.apelido_User %>",
+            };
+          </script>
+          <div class="mini-card">
+            <a href="/perfil/<%= userId %>">
+              <img
+                src="<%= usuarioLogado.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
+                alt="Imagem de perfil"
+              />
+              <div class="user-info">
+                <span><%= usuarioLogado.nome_User %></span>
+                <p>@<%= usuarioLogado.apelido_User %></p>
+              </div>
+            </a>
+          </div>
+          <% } %>
         </div>
-        <% if (podeEditar) { %>
-        <form
-          action="/editar-foto-perfil"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <p>Foto de Perfil:</p>
-          <input type="file" name="novaFotoPerfil" accept="image/*" />
-          <button type="submit">Salvar Foto de Perfil</button>
-        </form>
-        <% } %>
-        <p>Apelido: <%= usuario.apelido_User %></p>
-        <% if (podeEditar) { %>
-        <form id="biografiaForm" action="/editar-biografia" method="post">
-          <p>Biografia:</p>
-          <input
-            type="text"
-            id="biografiaInput"
-            name="novaBiografia"
-            value="<%= usuario.biografia || 'No bio yet' %>"
-            readonly
-          />
-          <span onclick="alternarEdicaoBiografia()">
-            <i class="ri-pencil-line"></i>
-          </span>
+        <!-- end menu -->
 
-          <!-- Botão Salvar -->
-          <button type="submit" id="btnSalvar" style="display: none">
-            Salvar
-          </button>
-        </form>
-        <% } else { %>
-        <p>Biografia: <%= usuario.biografia || 'No bio yet' %></p>
-        <% } %>
+        <div class="teste">
+          <div>
+            <img src="<%= usuario.foto_Perfil %>" alt="usuario foto" />
+          </div>
+        </div>
       </div>
-      <div>
-        <h2>Tweets de <%= usuario.nome_User %></h2>
-
-        <% usuario.tweets.forEach((tweet) => { %>
-        <strong>Tweet <%= tweet.idTweet %>:</strong>
-        <p><%= tweet.texto_Tweet %></p>
-        <% }) %>
-      </div>
-      <a href="/home">Home</a>
     </main>
     <script src="../scripts/userProfile.js"></script>
+    <script src="../scripts/home.js"></script>
   </body>
 </html>

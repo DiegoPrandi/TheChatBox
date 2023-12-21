@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Twitter Clone</title>
+    <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/home.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
@@ -89,7 +90,11 @@
         </script>
         <div class="mini-card">
           <a href="/perfil/<%= usuario.idUser %>">
-            <img src="<%= usuario.foto_Perfil %>" alt="Imagem de perfil" />
+            <img
+              src="<%= usuario.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
+              alt="Imagem de perfil"
+              id="teste"
+            />
             <div class="user-info">
               <span><%= usuario.nome_User %></span>
               <p>@<%= usuario.apelido_User %></p>

@@ -1,0 +1,127 @@
+.container {
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 26% 39% 35%;
+}
+
+/* MENU OPÇÕES ESQUERDA */
+.option__menu {
+  width: 100%;
+  border-right: solid 1px #2f3336;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.option__center {
+  float: right;
+  position: sticky;
+  top: 20px;
+}
+
+.logo i {
+  color: #fff;
+  font-size: 1.4rem;
+  margin-left: 0.7rem;
+  padding-bottom: 0.5rem;
+}
+
+.option div a {
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+}
+
+.option div a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.option div a i {
+  color: #fff;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.option #tweetar {
+  margin-top: 0.5rem;
+}
+
+.option .tweetar {
+  margin-left: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #1d9bf0;
+  padding: 12px 70px;
+  border-radius: 30px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.option .tweetar i {
+  display: none;
+}
+
+.option .tweetar:hover {
+  background-color: #1572af;
+}
+
+/* USER INFO */
+.mini-card {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  width: 200px;
+  visibility: hidden;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: solid 1px transparent;
+  position: sticky;
+  top: 100px;
+}
+
+.mini-card a {
+  width: 100%;
+  display: flex;
+}
+
+.mini-card:hover {
+  background: #0f0f0f;
+  border-color: #423d3d;
+}
+
+.mini-card img {
+  border-radius: 50%;
+  margin: 0 10px 0 5px;
+}
+
+.mini-card span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.mini-card p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #4a4e51;
+}
+
+.option__menu.show-mini-card .mini-card {
+  visibility: visible;
+  /* (show-mini-card) -> função do js para fazer aparecer quando usuario estiver logado*/
+  /* aparecer o card de usuario la em baixo*/
+}
+
+.mini-card img {
+  width: 40px;
+}
