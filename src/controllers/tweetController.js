@@ -40,9 +40,11 @@ exports.tweetarPOST = async (req, res) => {
         user: { connect: { idUser: userId } },
       },
       include: {
-        user: true, // incluir usuario pois nao estava conseguindo pega o id
+        user: true,
       },
     });
+
+    console.log("Usuário associado ao tweet:", novoTweet.user);
 
     res.redirect("/home");
   } catch (error) {

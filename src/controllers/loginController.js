@@ -40,6 +40,7 @@ exports.home = async (req, res) => {
             nome_User: true,
             apelido_User: true,
             email_User: true,
+            foto_Perfil: true,
           },
         },
       },

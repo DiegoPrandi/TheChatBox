@@ -1,4 +1,6 @@
 const express = require("express");
+const upload = require("../middlewares/uploadMiddleware");
+
 const loginController = require("../controllers/loginController");
 const tweetController = require("../controllers/tweetController");
 const userController = require("../controllers/userController");
@@ -23,5 +25,6 @@ router.post("/tweetar", tweetController.tweetarPOST);
 // USER CONTROLLER
 router.get("/perfil/:userId", userController.perfilUsuario);
 router.post("/editar-biografia", userController.editarBiografia);
+router.post("/editar-foto-perfil", userController.editarFotoPerfil);
 
 module.exports = router;

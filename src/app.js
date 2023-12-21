@@ -9,9 +9,14 @@ const app = express();
 
 const path = require("path");
 
+const multer = require("multer");
+const upload = multer({ dest: "public/images/perfis/temp" });
+
+app.use(upload.single("novaFotoPerfil"));
+
 app.use(
   session({
-    secret: "crazyMyMan", // Deve ser mantido em segredo
+    secret: "crazyMyMan",
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
