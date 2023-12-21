@@ -83,19 +83,18 @@
         <script>
           const usuarioLogado = {
             foto_url:
-              '<%= usuario.foto_url || "https://placekitten.com/40/40" %>',
+              '<%= usuario.foto_url || "../images/perfis/userBOX.jpg" %>',
             nome: "<%= usuario.nome_User %>",
           };
         </script>
         <div class="mini-card">
-          <img
-            src="<%= usuario.foto_url || 'https://placekitten.com/40/40' %>"
-            alt="Imagem de perfil"
-          />
-          <div class="user-info">
-            <span><%= usuario.nome_User %></span>
-            <p>@<%= usuario.apelido_User %></p>
-          </div>
+          <a href="/perfil/<%= usuario.idUser %>">
+            <img src="<%= usuario.foto_Perfil %>" alt="Imagem de perfil" />
+            <div class="user-info">
+              <span><%= usuario.nome_User %></span>
+              <p>@<%= usuario.apelido_User %></p>
+            </div>
+          </a>
         </div>
         <% } %>
       </div>
@@ -115,8 +114,8 @@
               <div class="profile__img">
                 <a href="/perfil/<%= tweet.user.idUser %>">
                   <img
-                    src="https://placekitten.com/40/40"
-                    alt="Imagem de gato 50x50"
+                    src="<%= tweet.user.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
+                    alt="Foto de perfil usuario"
                   />
                 </a>
               </div>

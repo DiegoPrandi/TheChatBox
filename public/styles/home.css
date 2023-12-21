@@ -103,6 +103,11 @@ body {
   top: 100px;
 }
 
+.mini-card a {
+  width: 100%;
+  display: flex;
+}
+
 .mini-card:hover {
   background: #0f0f0f;
   border-color: #423d3d;
@@ -113,7 +118,7 @@ body {
   margin: 0 10px 0 5px;
 }
 
-.mini-card {
+.mini-card span {
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -186,6 +191,7 @@ body {
 
 .profile__img img {
   border-radius: 100%;
+  width: 45px;
   margin-right: 0.5rem;
 }
 
@@ -277,6 +283,10 @@ body {
   text-decoration: underline;
 }
 
+.mini-card img {
+  width: 40px;
+}
+
 @media (min-width: 992px) and (max-width: 1150px) {
   .container {
     grid-template-columns: 10% 50% 40%;
@@ -330,6 +340,10 @@ body {
     margin-top: auto;
   }
 
+  .mini-card a {
+    justify-content: flex-end;
+  }
+
   .mini-card:hover {
     background-color: transparent;
     border-color: transparent;
@@ -337,11 +351,11 @@ body {
 
   .mini-card img {
     margin: 0;
-    transition: filter 0.3s ease; /* Adicionando uma transição suave */
+    transition: filter 0.3s ease;
   }
 
   .mini-card:hover img {
-    filter: brightness(0.7); /* Altera o brilho para 70% ao passar o mouse */
+    filter: brightness(0.7);
   }
 
   .subscription-box {
