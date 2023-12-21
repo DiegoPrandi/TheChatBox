@@ -3,7 +3,9 @@ CREATE TABLE chatBox_User (
     nome_User VARCHAR(50) NOT NULL,
     apelido_User VARCHAR(20) NOT NULL,
     email_User VARCHAR(50) NOT NULL,
-    senha_User VARCHAR(12) NOT NULL
+    senha_User VARCHAR(12) NOT NULL,
+    biografia  VARCHAR(255) NULL,
+    foto_perfil VARCHAR(255) NULL
 );
 
 CREATE TABLE chatBox_Tweet (
