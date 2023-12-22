@@ -44,8 +44,6 @@ exports.tweetarPOST = async (req, res) => {
       },
     });
 
-    console.log("Usuário associado ao tweet:", novoTweet.user);
-
     res.redirect("/home");
   } catch (error) {
     console.log(error);

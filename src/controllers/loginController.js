@@ -33,6 +33,7 @@ exports.home = async (req, res) => {
 
     // obter todos os tweets
     const tweets = await prisma.chatBox_Tweet.findMany({
+      orderBy: { data_Postagem: "desc" }, // 'desc' para obter os mais recentes primeiro
       include: {
         user: {
           select: {
