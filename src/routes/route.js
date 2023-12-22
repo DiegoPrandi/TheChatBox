@@ -24,6 +24,7 @@ router.post("/tweetar", tweetController.tweetarPOST);
 
 // USER CONTROLLER
 router.get("/perfil/:userId", userController.perfilUsuario);
+router.get("/editarFoto", userController.editarFoto);
 router.post("/editar-biografia", userController.editarBiografia);
 router.post("/editar-foto-perfil", userController.editarFotoPerfil);
 

@@ -47,6 +47,7 @@ app.use("/login", route);
 app.use("/cadastro", route);
 app.use("/tweetar", route);
 app.use("/perfil/:userId", route);
+app.use("/editarFoto", route);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

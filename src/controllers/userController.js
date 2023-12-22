@@ -97,3 +97,20 @@ exports.editarFotoPerfil = async (req, res) => {
     res.status(500).send("Erro interno do servidor");
   }
 };
+
+exports.editarFoto = async (req, res) => {
+  try {
+    const userId = req.session.userId;
+
+    if (userId) {
+      res.render("fotoPerfil", { userId });
+    } else {
+      res.send(
+        "<p>precisa esta logado para trocar a foto de perfil <a href='/login'>Fazer Login</a></p>"
+      );
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Erro interno do servidor");
+  }
+};
