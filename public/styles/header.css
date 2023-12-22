@@ -85,8 +85,8 @@
   border-radius: 30px;
   transition: all 0.3s ease;
   border: solid 1px transparent;
-  position: sticky;
-  top: 100px;
+  position: fixed;
+  top: 500px;
 }
 
 .mini-card a {
@@ -124,4 +124,50 @@
 
 .mini-card img {
   width: 40px;
+}
+
+.tweets {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tweets__content {
+  border-bottom: solid 1px #2f3336;
+  padding: 20px 10px;
+}
+
+.profile__msg {
+  color: #fff;
+  display: flex;
+}
+
+.profile__msg__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__img img {
+  border-radius: 100%;
+  width: 45px;
+  margin-right: 0.5rem;
+}
+
+.profile__name span {
+  display: flex;
+  font-size: 0.8rem;
+  color: #71767b;
+  align-items: flex-end;
+  padding-bottom: 0.2rem;
+}
+
+.profile__name p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 0.3rem;
+  color: #fff;
+}
+
+.msg {
+  font-size: 0.8rem;
 }

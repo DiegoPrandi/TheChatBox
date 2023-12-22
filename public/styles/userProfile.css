@@ -11,3 +11,110 @@
 body {
   background-color: #000;
 }
+
+.userProfile {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border-right: solid 1px #2f3336;
+}
+
+.userInformation {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  border-bottom: solid 1px #2f3336;
+  padding: 20px;
+}
+
+.userInformation__img {
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+.userInformation img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.userInformation__img i {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 3rem;
+  background-color: #00000060;
+  border-radius: 50%;
+  padding: 60px;
+  display: none;
+  color: #fff;
+}
+
+.userInformation__img:hover i {
+  transition: all 1 ease;
+  display: block;
+}
+
+.userInformation__text {
+  text-align: center;
+}
+
+.userInformation__text p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.userInformation__text p:nth-child(2) {
+  color: #4a4e51;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.userInformation__text span {
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 1px;
+}
+
+.userInformation__text form span i {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.userInformation__text input#biografiaInput {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.userInformation__text span p#editBio {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.userInformation__text span:hover p#editBio {
+  display: block;
+}
+
+.userInformation__text span i:hover {
+  font-size: 1.3rem;
+}
+
+.userInformation__text button {
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 10px;
+  cursor: pointer;
+}

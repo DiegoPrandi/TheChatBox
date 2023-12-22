@@ -108,11 +108,85 @@
         </div>
         <!-- end menu -->
 
-        <div class="teste">
-          <div>
-            <img src="<%= usuario.foto_Perfil %>" alt="usuario foto" />
+        <!-- userProfile -->
+        <div class="userProfile">
+          <div class="userInformation">
+            <div class="userInformation__content">
+              <div class="userInformation__img">
+                <img
+                  src="<%= usuario.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
+                  alt="Foto de perfil usuario"
+                />
+                <% if (podeEditar) { %>
+                <a href="/editarFoto">
+                  <i class="ri-pencil-line"></i>
+                  <% } %>
+                </a>
+              </div>
+              <div class="userInformation__text">
+                <p><%= usuario.nome_User %></p>
+                <p>@<%= usuario.apelido_User %></p>
+                <% if (podeEditar) { %>
+                <form
+                  id="biografiaForm"
+                  action="/editar-biografia"
+                  method="post"
+                >
+                  <input
+                    type="text"
+                    id="biografiaInput"
+                    name="novaBiografia"
+                    value="<%= usuario.biografia || 'No bio yet' %>"
+                    readonly
+                  />
+                  <br />
+                  <div>
+                    <span onclick="alternarEdicaoBiografia()">
+                      <i class="ri-file-edit-line"></i>
+                      <p id="editBio">Editar biografia</p></span
+                    >
+
+                    <!-- Botão Salvar -->
+                    <button type="submit" id="btnSalvar" style="display: none">
+                      Salvar
+                    </button>
+                  </div>
+                </form>
+                <% } else { %>
+                <span><%= usuario.biografia || 'No bio yet' %></span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="tweets__container">
+            <% usuario.tweets.forEach((tweet) => { %>
+            <div class="tweets__content">
+              <div class="profile__msg">
+                <div class="profile__img">
+                  <img
+                    src="<%= usuario.foto_Perfil || '../images/perfis/userBOX.jpg' %>"
+                    alt="Foto de perfil usuario"
+                  />
+                </div>
+                <div class="profile__msg__content">
+                  <div class="profile__name">
+                    <span
+                      ><p><%= usuario.nome_User %></p>
+                      @<%= usuario.apelido_User %></span
+                    >
+                  </div>
+                  <div class="msg">
+                    <p><%= tweet.texto_Tweet %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% }) %>
           </div>
         </div>
+        <!-- end userProfile -->
       </div>
     </main>
     <script src="../scripts/userProfile.js"></script>
