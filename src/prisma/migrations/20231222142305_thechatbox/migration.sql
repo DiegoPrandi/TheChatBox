@@ -19,6 +19,7 @@ CREATE TABLE `chatBox_Tweet` (
     `video_Tweet` VARCHAR(191) NULL,
     `curtidas_Tweet` INTEGER NOT NULL DEFAULT 0,
     `idUser` INTEGER NOT NULL,
+    `data_Postagem` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`idTweet`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
