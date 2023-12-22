@@ -1,5 +1,6 @@
 const express = require("express");
 const upload = require("../middlewares/uploadMiddleware");
+const tweetImageUpload = require("../middlewares/tweetUploadMiddleware");
 
 const loginController = require("../controllers/loginController");
 const tweetController = require("../controllers/tweetController");

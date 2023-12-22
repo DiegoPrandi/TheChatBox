@@ -11,8 +11,7 @@ const path = require("path");
 
 const multer = require("multer");
 const upload = multer({ dest: "public/images/perfis/temp" });
-
-app.use(upload.single("novaFotoPerfil"));
+const tweetImageUpload = require("./middlewares/tweetUploadMiddleware");
 
 app.use(
   session({
@@ -22,6 +21,12 @@ app.use(
     cookie: { secure: false },
   })
 );
+
+// Middleware para upload de imagens de tweets
+app.use(tweetImageUpload.single("imagemTweet"));
+
+// Middleware para upload de imagens de perfil
+app.use(upload.single("novaFotoPerfil"));
 
 // indicando a rota
 const route = require("./routes/route");

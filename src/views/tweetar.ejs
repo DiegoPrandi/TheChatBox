@@ -7,9 +7,12 @@
   </head>
   <body>
     <% if (usuario) { %>
-    <form action="/tweetar" method="post">
+    <form action="/tweetar" method="post" enctype="multipart/form-data">
       <label for="text_Tweet">Texto:</label>
       <input type="text" name="text_Tweet" id="text_Tweet" required />
+      <br /><br />
+      <label for="imagemTweet">Imagem do Tweet:</label>
+      <input type="file" name="imagemTweet" id="imagemTweet" accept="image/*" />
       <br /><br />
       <button type="submit">Tweetar</button>
     </form>
